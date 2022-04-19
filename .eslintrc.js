@@ -25,5 +25,6 @@ module.exports = {
         endOfLine: "auto",
       },
     ],
+    "max-classes-per-file": ["error", 1],
   },
 };
