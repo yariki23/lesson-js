@@ -13,15 +13,20 @@ const tasks = [
  * @param {object[]} tasksList
  * @return {undefined}
  */
+// const removeList = document.querySelectorAll("UL");
+const removeList = document.querySelectorAll("UL li");
+removeList.forEach((val) => val.parentNode.removeChild(val));
+
 const renderTasks = (tasksList) => {
-  const listElem = document.getElementById("list");
-  console.log(listElem);
+  const listElem = document.querySelector("ul");
+
   const listItemsElems = tasksList.map(({ text, done }) => {
     const listItemElem = document.createElement("li");
     listItemElem.classList.add("list__item");
     if (done) {
       listItemElem.classList.add("list__item_done");
     }
+
     const checkboxElem = document.createElement("input");
     checkboxElem.setAttribute("type", "checkbox");
     checkboxElem.checked = done;
