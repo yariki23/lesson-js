@@ -34,18 +34,45 @@
 // }
 
 //V4
-function buildObject(keysList, valuesList) {
-  keysList.reduce(
-    (acc, key, index) => ({ ...acc, [key]: valuesList[index] }),
-    {}
-  );
-}
+// function buildObject(keysList, valuesList) {
+//   keysList.reduce(
+//     (acc, key, index) => ({ ...acc, [key]: valuesList[index] }),
+//     {}
+//   );
+// }
 
-//if code doesn't work - split by step
+// //if code doesn't work - split by step
 
-//test data
+// //test data
 
-const keysForCountry = ["Ukraine", "Germany"];
-const valueCity = ["Kiev", "Berlin"];
-const result = buildObject(keysForCountry, valueCity); // ==> { name: 'Bob', address: 'Ukraine', age: 34 }
-console.log(result);
+// const keysForCountry = ["Ukraine", "Germany"];
+// const valueCity = ["Kiev", "Berlin"];
+// const result = buildObject(keysForCountry, valueCity); // ==> { name: 'Bob', address: 'Ukraine', age: 34 }
+// console.log(result);
+const customers = {
+  "customer-id-1": {
+    name: "William",
+    age: 54,
+  },
+  "customer-is-2": {
+    name: "Tom",
+    age: 17,
+  },
+};
+
+const getCustomersList = (obj) => {
+  if (Object.keys(obj).length === 0) {
+    return [];
+  }
+  const customerSortAge = Object.entries(obj);
+  const customerId = customerSortAge.map((id) => ({
+    id: id[0],
+  }));
+  return customerSortAge
+    .map((customer, index) => ({
+      ...customer[1],
+      ...customerId[index],
+    }))
+    .sort((age, nextAge) => age.age - nextAge.age);
+};
+console.log(getCustomersList(customers));
